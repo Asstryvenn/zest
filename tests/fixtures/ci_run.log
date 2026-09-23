@@ -1,0 +1,614 @@
+[1m============================= test session starts ==============================[0m
+platform darwin -- Python 3.12.4, pytest-8.3.2, pluggy-1.5.0
+rootdir: /Users/dev/shop
+Downloading wheels 0%Downloading wheels 4%Downloading wheels 8%Downloading wheels 12%Downloading wheels 16%Downloading wheels 20%Downloading wheels 24%Downloading wheels 28%Downloading wheels 32%Downloading wheels 36%Downloading wheels 40%Downloading wheels 44%Downloading wheels 48%Downloading wheels 52%Downloading wheels 56%Downloading wheels 60%Downloading wheels 64%Downloading wheels 68%Downloading wheels 72%Downloading wheels 76%Downloading wheels 80%Downloading wheels 84%Downloading wheels 88%Downloading wheels 92%Downloading wheels 96%Downloading wheels 100%
+2026-09-23 10:00:00,254 INFO  shop.payments: handled request id=61750 status=200 in 85ms
+2026-09-23 10:00:00,149 DEBUG shop.db: SELECT * FROM payments WHERE id = %s [75]
+2026-09-23 10:00:00,940 WARNING shop.cache: redis latency 748ms above threshold
+2026-09-23 10:00:01,474 INFO  shop.cart: handled request id=86387 status=200 in 9ms
+2026-09-23 10:00:02,138 INFO  shop.inventory: handled request id=21265 status=200 in 57ms
+2026-09-23 10:00:03,171 INFO  shop.search: handled request id=41544 status=200 in 13ms
+2026-09-23 10:00:04,160 INFO  shop.search: handled request id=84115 status=200 in 17ms
+2026-09-23 10:00:05,745 INFO  shop.inventory: handled request id=92238 status=200 in 76ms
+2026-09-23 10:00:06,690 INFO  shop.auth: handled request id=86748 status=200 in 52ms
+2026-09-23 10:00:07,326 INFO  shop.auth: handled request id=16105 status=200 in 73ms
+2026-09-23 10:00:07,979 DEBUG shop.db: SELECT * FROM auth WHERE id = %s [137]
+2026-09-23 10:00:08,529 INFO  shop.orders: handled request id=28907 status=200 in 71ms
+2026-09-23 10:00:09,684 INFO  shop.cart: handled request id=50433 status=200 in 73ms
+2026-09-23 10:00:10,205 INFO  shop.checkout: handled request id=86231 status=200 in 75ms
+2026-09-23 10:00:11,481 INFO  shop.inventory: handled request id=22770 status=200 in 72ms
+2026-09-23 10:00:12,677 INFO  shop.cart: handled request id=17812 status=200 in 81ms
+2026-09-23 10:00:13,608 INFO  shop.inventory: handled request id=99181 status=200 in 70ms
+2026-09-23 10:00:14,895 INFO  shop.search: handled request id=51175 status=200 in 61ms
+2026-09-23 10:00:14,699 DEBUG shop.db: SELECT * FROM search WHERE id = %s [946]
+2026-09-23 10:00:15,470 INFO  shop.users: handled request id=49291 status=200 in 33ms
+2026-09-23 10:00:16,815 INFO  shop.checkout: handled request id=41994 status=200 in 12ms
+2026-09-23 10:00:17,637 INFO  shop.orders: handled request id=74895 status=200 in 45ms
+2026-09-23 10:00:18,394 INFO  shop.users: handled request id=89817 status=200 in 11ms
+2026-09-23 10:00:19,624 INFO  shop.cart: handled request id=64804 status=200 in 23ms
+2026-09-23 10:00:20,255 INFO  shop.payments: handled request id=74089 status=200 in 55ms
+2026-09-23 10:00:21,784 INFO  shop.auth: handled request id=20173 status=200 in 73ms
+2026-09-23 10:00:21,686 DEBUG shop.db: SELECT * FROM auth WHERE id = %s [809]
+2026-09-23 10:00:22,448 INFO  shop.payments: handled request id=55898 status=200 in 78ms
+2026-09-23 10:00:23,693 INFO  shop.users: handled request id=69795 status=200 in 10ms
+2026-09-23 10:00:24,376 INFO  shop.cart: handled request id=72141 status=200 in 87ms
+2026-09-23 10:00:25,162 INFO  shop.cart: handled request id=50580 status=200 in 84ms
+2026-09-23 10:00:26,391 INFO  shop.users: handled request id=60566 status=200 in 87ms
+2026-09-23 10:00:27,123 INFO  shop.payments: handled request id=70515 status=200 in 47ms
+2026-09-23 10:00:28,725 INFO  shop.checkout: handled request id=25347 status=200 in 65ms
+2026-09-23 10:00:28,160 DEBUG shop.db: SELECT * FROM checkout WHERE id = %s [224]
+2026-09-23 10:00:29,232 INFO  shop.orders: handled request id=42455 status=200 in 52ms
+2026-09-23 10:00:30,992 INFO  shop.search: handled request id=75078 status=200 in 12ms
+2026-09-23 10:00:31,559 INFO  shop.checkout: handled request id=62644 status=200 in 72ms
+2026-09-23 10:00:32,240 INFO  shop.orders: handled request id=66429 status=200 in 72ms
+2026-09-23 10:00:33,823 INFO  shop.orders: handled request id=64433 status=200 in 47ms
+2026-09-23 10:00:34,336 INFO  shop.search: handled request id=29781 status=200 in 12ms
+2026-09-23 10:00:35,254 INFO  shop.checkout: handled request id=40403 status=200 in 86ms
+2026-09-23 10:00:35,338 DEBUG shop.db: SELECT * FROM checkout WHERE id = %s [13]
+2026-09-23 10:00:36,951 INFO  shop.users: handled request id=87217 status=200 in 25ms
+2026-09-23 10:00:37,388 INFO  shop.orders: handled request id=10536 status=200 in 20ms
+2026-09-23 10:00:38,647 INFO  shop.search: handled request id=58398 status=200 in 80ms
+2026-09-23 10:00:39,228 INFO  shop.payments: handled request id=77566 status=200 in 81ms
+2026-09-23 10:00:40,567 INFO  shop.auth: handled request id=99204 status=200 in 73ms
+2026-09-23 10:00:41,507 INFO  shop.search: handled request id=62294 status=200 in 52ms
+2026-09-23 10:00:42,593 INFO  shop.cart: handled request id=93137 status=200 in 53ms
+2026-09-23 10:00:42,163 DEBUG shop.db: SELECT * FROM cart WHERE id = %s [196]
+2026-09-23 10:00:43,313 INFO  shop.cart: handled request id=67753 status=200 in 22ms
+2026-09-23 10:00:44,448 INFO  shop.cart: handled request id=88738 status=200 in 8ms
+2026-09-23 10:00:45,100 INFO  shop.cart: handled request id=84289 status=200 in 21ms
+2026-09-23 10:00:46,472 INFO  shop.cart: handled request id=90443 status=200 in 5ms
+2026-09-23 10:00:47,995 INFO  shop.cart: handled request id=37256 status=200 in 80ms
+2026-09-23 10:00:48,252 INFO  shop.search: handled request id=93153 status=200 in 34ms
+2026-09-23 10:00:49,716 INFO  shop.payments: handled request id=57731 status=200 in 62ms
+2026-09-23 10:00:49,225 DEBUG shop.db: SELECT * FROM payments WHERE id = %s [119]
+2026-09-23 10:00:50,577 INFO  shop.users: handled request id=72966 status=200 in 63ms
+2026-09-23 10:00:50,419 WARNING shop.cache: redis latency 287ms above threshold
+2026-09-23 10:00:51,204 INFO  shop.checkout: handled request id=54909 status=200 in 35ms
+2026-09-23 10:00:52,948 INFO  shop.users: handled request id=31160 status=200 in 68ms
+2026-09-23 10:00:53,310 INFO  shop.auth: handled request id=79239 status=200 in 48ms
+2026-09-23 10:00:54,806 INFO  shop.checkout: handled request id=81194 status=200 in 5ms
+2026-09-23 10:00:55,758 INFO  shop.orders: handled request id=21928 status=200 in 35ms
+2026-09-23 10:00:56,271 INFO  shop.payments: handled request id=56621 status=200 in 30ms
+2026-09-23 10:00:56,645 DEBUG shop.db: SELECT * FROM payments WHERE id = %s [555]
+2026-09-23 10:00:57,751 INFO  shop.payments: handled request id=39234 status=200 in 80ms
+2026-09-23 10:00:58,925 INFO  shop.inventory: handled request id=41377 status=200 in 53ms
+2026-09-23 10:00:59,304 INFO  shop.inventory: handled request id=77847 status=200 in 65ms
+2026-09-23 10:01:00,848 INFO  shop.payments: handled request id=13798 status=200 in 5ms
+2026-09-23 10:01:01,583 INFO  shop.orders: handled request id=43970 status=200 in 26ms
+2026-09-23 10:01:02,557 INFO  shop.payments: handled request id=55812 status=200 in 48ms
+2026-09-23 10:01:03,325 INFO  shop.cart: handled request id=23389 status=200 in 31ms
+2026-09-23 10:01:03,581 DEBUG shop.db: SELECT * FROM cart WHERE id = %s [202]
+2026-09-23 10:01:04,309 INFO  shop.payments: handled request id=73262 status=200 in 81ms
+2026-09-23 10:01:05,590 INFO  shop.auth: handled request id=95587 status=200 in 46ms
+2026-09-23 10:01:06,954 INFO  shop.cart: handled request id=96584 status=200 in 17ms
+2026-09-23 10:01:07,901 INFO  shop.search: handled request id=36125 status=200 in 63ms
+2026-09-23 10:01:08,544 INFO  shop.checkout: handled request id=93341 status=200 in 44ms
+2026-09-23 10:01:09,920 INFO  shop.cart: handled request id=61883 status=200 in 61ms
+2026-09-23 10:01:10,861 INFO  shop.search: handled request id=21130 status=200 in 22ms
+2026-09-23 10:01:10,274 DEBUG shop.db: SELECT * FROM search WHERE id = %s [131]
+2026-09-23 10:01:11,254 INFO  shop.auth: handled request id=87438 status=200 in 61ms
+2026-09-23 10:01:12,726 INFO  shop.checkout: handled request id=88101 status=200 in 62ms
+2026-09-23 10:01:13,259 INFO  shop.payments: handled request id=81913 status=200 in 72ms
+2026-09-23 10:01:14,121 INFO  shop.checkout: handled request id=11866 status=200 in 85ms
+2026-09-23 10:01:15,639 INFO  shop.cart: handled request id=28251 status=200 in 57ms
+2026-09-23 10:01:16,945 INFO  shop.inventory: handled request id=37661 status=200 in 5ms
+2026-09-23 10:01:17,317 INFO  shop.orders: handled request id=48399 status=200 in 66ms
+2026-09-23 10:01:17,346 DEBUG shop.db: SELECT * FROM orders WHERE id = %s [783]
+2026-09-23 10:01:18,365 INFO  shop.payments: handled request id=81349 status=200 in 55ms
+2026-09-23 10:01:19,162 INFO  shop.checkout: handled request id=56371 status=200 in 60ms
+2026-09-23 10:01:20,946 INFO  shop.search: handled request id=75752 status=200 in 18ms
+2026-09-23 10:01:21,636 INFO  shop.checkout: handled request id=76918 status=200 in 4ms
+2026-09-23 10:01:22,895 INFO  shop.users: handled request id=34000 status=200 in 79ms
+2026-09-23 10:01:23,894 INFO  shop.auth: handled request id=29634 status=200 in 24ms
+2026-09-23 10:01:24,584 INFO  shop.checkout: handled request id=91146 status=200 in 17ms
+2026-09-23 10:01:24,669 DEBUG shop.db: SELECT * FROM checkout WHERE id = %s [64]
+2026-09-23 10:01:25,798 INFO  shop.payments: handled request id=77941 status=200 in 69ms
+2026-09-23 10:01:26,903 INFO  shop.users: handled request id=23907 status=200 in 73ms
+2026-09-23 10:01:27,354 INFO  shop.auth: handled request id=35074 status=200 in 37ms
+2026-09-23 10:01:28,890 INFO  shop.auth: handled request id=22811 status=200 in 66ms
+2026-09-23 10:01:29,675 INFO  shop.users: handled request id=13652 status=200 in 10ms
+2026-09-23 10:01:30,433 INFO  shop.users: handled request id=90285 status=200 in 66ms
+2026-09-23 10:01:31,809 INFO  shop.inventory: handled request id=46331 status=200 in 59ms
+2026-09-23 10:01:31,620 DEBUG shop.db: SELECT * FROM inventory WHERE id = %s [547]
+2026-09-23 10:01:32,619 INFO  shop.users: handled request id=42460 status=200 in 68ms
+2026-09-23 10:01:33,672 INFO  shop.orders: handled request id=36553 status=200 in 59ms
+2026-09-23 10:01:34,526 INFO  shop.checkout: handled request id=25941 status=200 in 52ms
+2026-09-23 10:01:35,423 INFO  shop.users: handled request id=19508 status=200 in 87ms
+2026-09-23 10:01:36,538 INFO  shop.inventory: handled request id=19584 status=200 in 29ms
+2026-09-23 10:01:37,902 INFO  shop.orders: handled request id=26036 status=200 in 21ms
+2026-09-23 10:01:38,246 INFO  shop.payments: handled request id=43175 status=200 in 19ms
+2026-09-23 10:01:38,578 DEBUG shop.db: SELECT * FROM payments WHERE id = %s [225]
+2026-09-23 10:01:39,507 INFO  shop.cart: handled request id=73866 status=200 in 22ms
+2026-09-23 10:01:40,265 INFO  shop.inventory: handled request id=66560 status=200 in 67ms
+2026-09-23 10:01:40,513 WARNING shop.cache: redis latency 547ms above threshold
+2026-09-23 10:01:41,300 INFO  shop.search: handled request id=56742 status=200 in 42ms
+2026-09-23 10:01:42,839 INFO  shop.cart: handled request id=57966 status=200 in 4ms
+2026-09-23 10:01:43,667 INFO  shop.payments: handled request id=70118 status=200 in 58ms
+2026-09-23 10:01:44,493 INFO  shop.auth: handled request id=53450 status=200 in 68ms
+2026-09-23 10:01:45,624 INFO  shop.orders: handled request id=18426 status=200 in 16ms
+2026-09-23 10:01:45,907 DEBUG shop.db: SELECT * FROM orders WHERE id = %s [235]
+2026-09-23 10:01:46,186 INFO  shop.cart: handled request id=44808 status=200 in 36ms
+2026-09-23 10:01:47,897 INFO  shop.auth: handled request id=33796 status=200 in 36ms
+2026-09-23 10:01:48,939 INFO  shop.checkout: handled request id=65345 status=200 in 88ms
+2026-09-23 10:01:49,515 INFO  shop.orders: handled request id=29577 status=200 in 70ms
+2026-09-23 10:01:50,817 INFO  shop.users: handled request id=52866 status=200 in 13ms
+2026-09-23 10:01:51,158 INFO  shop.orders: handled request id=34031 status=200 in 56ms
+2026-09-23 10:01:52,375 INFO  shop.cart: handled request id=12206 status=200 in 83ms
+2026-09-23 10:01:52,190 DEBUG shop.db: SELECT * FROM cart WHERE id = %s [821]
+2026-09-23 10:01:53,185 INFO  shop.orders: handled request id=89715 status=200 in 30ms
+2026-09-23 10:01:54,370 INFO  shop.cart: handled request id=25948 status=200 in 60ms
+2026-09-23 10:01:55,447 INFO  shop.auth: handled request id=82491 status=200 in 55ms
+2026-09-23 10:01:56,736 INFO  shop.orders: handled request id=26937 status=200 in 7ms
+2026-09-23 10:01:57,212 INFO  shop.inventory: handled request id=31161 status=200 in 35ms
+2026-09-23 10:01:58,285 INFO  shop.auth: handled request id=36446 status=200 in 41ms
+2026-09-23 10:01:59,643 INFO  shop.orders: handled request id=36983 status=200 in 39ms
+2026-09-23 10:01:59,556 DEBUG shop.db: SELECT * FROM orders WHERE id = %s [513]
+2026-09-23 10:02:00,377 INFO  shop.checkout: handled request id=55482 status=200 in 4ms
+2026-09-23 10:02:01,137 INFO  shop.orders: handled request id=12011 status=200 in 4ms
+2026-09-23 10:02:02,626 INFO  shop.inventory: handled request id=72227 status=200 in 33ms
+2026-09-23 10:02:03,208 INFO  shop.users: handled request id=96287 status=200 in 85ms
+2026-09-23 10:02:04,772 INFO  shop.search: handled request id=74880 status=200 in 71ms
+2026-09-23 10:02:05,618 INFO  shop.search: handled request id=50341 status=200 in 90ms
+2026-09-23 10:02:06,335 INFO  shop.inventory: handled request id=54918 status=200 in 27ms
+2026-09-23 10:02:06,952 DEBUG shop.db: SELECT * FROM inventory WHERE id = %s [904]
+2026-09-23 10:02:07,514 INFO  shop.checkout: handled request id=55554 status=200 in 8ms
+2026-09-23 10:02:08,114 INFO  shop.checkout: handled request id=19269 status=200 in 82ms
+2026-09-23 10:02:09,541 INFO  shop.orders: handled request id=31397 status=200 in 9ms
+2026-09-23 10:02:10,781 INFO  shop.cart: handled request id=59922 status=200 in 66ms
+2026-09-23 10:02:11,713 INFO  shop.orders: handled request id=41747 status=200 in 90ms
+2026-09-23 10:02:12,146 INFO  shop.orders: handled request id=70221 status=200 in 25ms
+2026-09-23 10:02:13,375 INFO  shop.checkout: handled request id=68435 status=200 in 2ms
+2026-09-23 10:02:13,369 DEBUG shop.db: SELECT * FROM checkout WHERE id = %s [373]
+2026-09-23 10:02:14,660 INFO  shop.payments: handled request id=52406 status=200 in 33ms
+2026-09-23 10:02:15,416 INFO  shop.auth: handled request id=38556 status=200 in 47ms
+2026-09-23 10:02:16,101 INFO  shop.checkout: handled request id=53952 status=200 in 50ms
+2026-09-23 10:02:17,586 INFO  shop.cart: handled request id=46559 status=200 in 66ms
+2026-09-23 10:02:18,354 INFO  shop.inventory: handled request id=76156 status=200 in 2ms
+2026-09-23 10:02:19,370 INFO  shop.cart: handled request id=21764 status=200 in 20ms
+2026-09-23 10:02:20,700 INFO  shop.search: handled request id=15461 status=200 in 52ms
+2026-09-23 10:02:20,123 DEBUG shop.db: SELECT * FROM search WHERE id = %s [307]
+2026-09-23 10:02:21,744 INFO  shop.orders: handled request id=40514 status=200 in 12ms
+2026-09-23 10:02:22,773 INFO  shop.checkout: handled request id=88192 status=200 in 51ms
+2026-09-23 10:02:23,837 INFO  shop.payments: handled request id=74774 status=200 in 21ms
+2026-09-23 10:02:24,841 INFO  shop.orders: handled request id=91095 status=200 in 84ms
+2026-09-23 10:02:25,144 INFO  shop.checkout: handled request id=77237 status=200 in 82ms
+2026-09-23 10:02:26,851 INFO  shop.search: handled request id=76262 status=200 in 19ms
+2026-09-23 10:02:27,946 INFO  shop.auth: handled request id=99977 status=200 in 76ms
+2026-09-23 10:02:27,917 DEBUG shop.db: SELECT * FROM auth WHERE id = %s [915]
+2026-09-23 10:02:28,187 INFO  shop.inventory: handled request id=14084 status=200 in 7ms
+2026-09-23 10:02:29,752 INFO  shop.checkout: handled request id=57278 status=200 in 15ms
+2026-09-23 10:02:30,955 INFO  shop.search: handled request id=69164 status=200 in 73ms
+2026-09-23 10:02:30,151 WARNING shop.cache: redis latency 842ms above threshold
+2026-09-23 10:02:31,741 INFO  shop.auth: handled request id=79657 status=200 in 89ms
+2026-09-23 10:02:32,601 INFO  shop.inventory: handled request id=44575 status=200 in 2ms
+2026-09-23 10:02:33,916 INFO  shop.users: handled request id=19189 status=200 in 66ms
+2026-09-23 10:02:34,775 INFO  shop.cart: handled request id=78942 status=200 in 10ms
+2026-09-23 10:02:34,863 DEBUG shop.db: SELECT * FROM cart WHERE id = %s [755]
+2026-09-23 10:02:35,358 INFO  shop.users: handled request id=19758 status=200 in 35ms
+2026-09-23 10:02:36,846 INFO  shop.inventory: handled request id=36898 status=200 in 31ms
+2026-09-23 10:02:37,605 INFO  shop.users: handled request id=60142 status=200 in 11ms
+2026-09-23 10:02:38,800 INFO  shop.users: handled request id=47659 status=200 in 7ms
+2026-09-23 10:02:39,179 INFO  shop.inventory: handled request id=88604 status=200 in 20ms
+2026-09-23 10:02:40,360 INFO  shop.payments: handled request id=95397 status=200 in 90ms
+2026-09-23 10:02:41,736 INFO  shop.orders: handled request id=84417 status=200 in 19ms
+2026-09-23 10:02:41,112 DEBUG shop.db: SELECT * FROM orders WHERE id = %s [494]
+2026-09-23 10:02:42,597 INFO  shop.auth: handled request id=45228 status=200 in 88ms
+2026-09-23 10:02:43,808 INFO  shop.cart: handled request id=38533 status=200 in 88ms
+2026-09-23 10:02:44,397 INFO  shop.users: handled request id=77703 status=200 in 38ms
+2026-09-23 10:02:45,577 INFO  shop.users: handled request id=71124 status=200 in 17ms
+2026-09-23 10:02:46,419 INFO  shop.inventory: handled request id=21253 status=200 in 62ms
+2026-09-23 10:02:47,396 INFO  shop.auth: handled request id=70158 status=200 in 11ms
+2026-09-23 10:02:48,375 INFO  shop.users: handled request id=60704 status=200 in 28ms
+2026-09-23 10:02:48,315 DEBUG shop.db: SELECT * FROM users WHERE id = %s [77]
+2026-09-23 10:02:49,245 INFO  shop.cart: handled request id=78690 status=200 in 35ms
+2026-09-23 10:02:50,235 INFO  shop.payments: handled request id=89084 status=200 in 82ms
+2026-09-23 10:02:51,215 INFO  shop.orders: handled request id=57865 status=200 in 31ms
+2026-09-23 10:02:52,997 INFO  shop.users: handled request id=73719 status=200 in 52ms
+2026-09-23 10:02:53,262 INFO  shop.auth: handled request id=10470 status=200 in 64ms
+2026-09-23 10:02:54,515 INFO  shop.users: handled request id=49577 status=200 in 20ms
+2026-09-23 10:02:55,452 INFO  shop.search: handled request id=59296 status=200 in 42ms
+2026-09-23 10:02:55,223 DEBUG shop.db: SELECT * FROM search WHERE id = %s [861]
+2026-09-23 10:02:56,101 INFO  shop.payments: handled request id=52539 status=200 in 45ms
+2026-09-23 10:02:57,222 INFO  shop.search: handled request id=35656 status=200 in 3ms
+2026-09-23 10:02:58,359 INFO  shop.orders: handled request id=58787 status=200 in 10ms
+2026-09-23 10:02:59,499 INFO  shop.search: handled request id=87224 status=200 in 11ms
+2026-09-23 10:03:00,538 INFO  shop.payments: handled request id=46065 status=200 in 8ms
+2026-09-23 10:03:01,204 INFO  shop.orders: handled request id=16765 status=200 in 86ms
+2026-09-23 10:03:02,750 INFO  shop.orders: handled request id=29518 status=200 in 33ms
+2026-09-23 10:03:02,372 DEBUG shop.db: SELECT * FROM orders WHERE id = %s [447]
+2026-09-23 10:03:03,294 INFO  shop.payments: handled request id=58935 status=200 in 56ms
+2026-09-23 10:03:04,931 INFO  shop.auth: handled request id=92692 status=200 in 53ms
+2026-09-23 10:03:05,836 INFO  shop.inventory: handled request id=20561 status=200 in 8ms
+2026-09-23 10:03:06,561 INFO  shop.search: handled request id=90598 status=200 in 19ms
+2026-09-23 10:03:07,597 INFO  shop.orders: handled request id=16419 status=200 in 72ms
+2026-09-23 10:03:08,274 INFO  shop.checkout: handled request id=71890 status=200 in 55ms
+2026-09-23 10:03:09,388 INFO  shop.payments: handled request id=49029 status=200 in 34ms
+2026-09-23 10:03:09,856 DEBUG shop.db: SELECT * FROM payments WHERE id = %s [757]
+2026-09-23 10:03:10,515 INFO  shop.orders: handled request id=95982 status=200 in 32ms
+2026-09-23 10:03:11,594 INFO  shop.orders: handled request id=83049 status=200 in 87ms
+2026-09-23 10:03:12,222 INFO  shop.search: handled request id=31932 status=200 in 84ms
+2026-09-23 10:03:13,176 INFO  shop.checkout: handled request id=37246 status=200 in 66ms
+2026-09-23 10:03:14,663 INFO  shop.users: handled request id=38839 status=200 in 59ms
+2026-09-23 10:03:15,877 INFO  shop.payments: handled request id=68977 status=200 in 56ms
+2026-09-23 10:03:16,660 INFO  shop.checkout: handled request id=35219 status=200 in 33ms
+2026-09-23 10:03:16,192 DEBUG shop.db: SELECT * FROM checkout WHERE id = %s [179]
+2026-09-23 10:03:17,669 INFO  shop.payments: handled request id=21939 status=200 in 42ms
+2026-09-23 10:03:18,477 INFO  shop.inventory: handled request id=43863 status=200 in 74ms
+2026-09-23 10:03:19,120 INFO  shop.inventory: handled request id=64104 status=200 in 51ms
+2026-09-23 10:03:20,863 INFO  shop.search: handled request id=78703 status=200 in 28ms
+2026-09-23 10:03:20,485 WARNING shop.cache: redis latency 476ms above threshold
+2026-09-23 10:03:21,870 INFO  shop.payments: handled request id=18134 status=200 in 65ms
+2026-09-23 10:03:22,688 INFO  shop.orders: handled request id=57204 status=200 in 18ms
+2026-09-23 10:03:23,194 INFO  shop.inventory: handled request id=45523 status=200 in 33ms
+2026-09-23 10:03:23,493 DEBUG shop.db: SELECT * FROM inventory WHERE id = %s [410]
+2026-09-23 10:03:24,542 INFO  shop.users: handled request id=50896 status=200 in 4ms
+2026-09-23 10:03:25,133 INFO  shop.checkout: handled request id=65731 status=200 in 62ms
+2026-09-23 10:03:26,100 INFO  shop.users: handled request id=19586 status=200 in 52ms
+2026-09-23 10:03:27,559 INFO  shop.users: handled request id=42566 status=200 in 15ms
+2026-09-23 10:03:28,258 INFO  shop.inventory: handled request id=29931 status=200 in 68ms
+2026-09-23 10:03:29,945 INFO  shop.cart: handled request id=94849 status=200 in 60ms
+2026-09-23 10:03:30,664 INFO  shop.cart: handled request id=15183 status=200 in 2ms
+2026-09-23 10:03:30,901 DEBUG shop.db: SELECT * FROM cart WHERE id = %s [129]
+2026-09-23 10:03:31,683 INFO  shop.inventory: handled request id=14927 status=200 in 84ms
+2026-09-23 10:03:32,231 INFO  shop.orders: handled request id=92113 status=200 in 34ms
+2026-09-23 10:03:33,815 INFO  shop.search: handled request id=24697 status=200 in 14ms
+2026-09-23 10:03:34,407 INFO  shop.cart: handled request id=78738 status=200 in 76ms
+2026-09-23 10:03:35,497 INFO  shop.inventory: handled request id=44194 status=200 in 30ms
+2026-09-23 10:03:36,110 INFO  shop.auth: handled request id=80448 status=200 in 40ms
+2026-09-23 10:03:37,385 INFO  shop.users: handled request id=51465 status=200 in 84ms
+2026-09-23 10:03:37,959 DEBUG shop.db: SELECT * FROM users WHERE id = %s [905]
+2026-09-23 10:03:38,586 INFO  shop.inventory: handled request id=78980 status=200 in 32ms
+2026-09-23 10:03:39,129 INFO  shop.inventory: handled request id=63976 status=200 in 85ms
+2026-09-23 10:03:40,156 INFO  shop.orders: handled request id=12855 status=200 in 26ms
+2026-09-23 10:03:41,790 INFO  shop.users: handled request id=94825 status=200 in 55ms
+2026-09-23 10:03:42,363 INFO  shop.cart: handled request id=39863 status=200 in 87ms
+2026-09-23 10:03:43,479 INFO  shop.search: handled request id=39725 status=200 in 65ms
+2026-09-23 10:03:44,812 INFO  shop.auth: handled request id=54309 status=200 in 55ms
+2026-09-23 10:03:44,471 DEBUG shop.db: SELECT * FROM auth WHERE id = %s [699]
+2026-09-23 10:03:45,302 INFO  shop.search: handled request id=10885 status=200 in 39ms
+2026-09-23 10:03:46,310 INFO  shop.cart: handled request id=74971 status=200 in 27ms
+2026-09-23 10:03:47,884 INFO  shop.orders: handled request id=35419 status=200 in 31ms
+2026-09-23 10:03:48,326 INFO  shop.users: handled request id=44736 status=200 in 39ms
+2026-09-23 10:03:49,738 INFO  shop.cart: handled request id=74980 status=200 in 80ms
+2026-09-23 10:03:50,328 INFO  shop.checkout: handled request id=73576 status=200 in 55ms
+2026-09-23 10:03:51,709 INFO  shop.auth: handled request id=29186 status=200 in 52ms
+2026-09-23 10:03:51,155 DEBUG shop.db: SELECT * FROM auth WHERE id = %s [219]
+2026-09-23 10:03:52,710 INFO  shop.auth: handled request id=28600 status=200 in 55ms
+2026-09-23 10:03:53,826 INFO  shop.auth: handled request id=17882 status=200 in 25ms
+2026-09-23 10:03:54,560 INFO  shop.search: handled request id=51182 status=200 in 16ms
+2026-09-23 10:03:55,269 INFO  shop.cart: handled request id=53154 status=200 in 26ms
+2026-09-23 10:03:56,768 INFO  shop.checkout: handled request id=78786 status=200 in 61ms
+2026-09-23 10:03:57,419 INFO  shop.auth: handled request id=97088 status=200 in 50ms
+2026-09-23 10:03:58,439 INFO  shop.payments: handled request id=67990 status=200 in 23ms
+2026-09-23 10:03:58,211 DEBUG shop.db: SELECT * FROM payments WHERE id = %s [3]
+2026-09-23 10:03:59,386 INFO  shop.cart: handled request id=20585 status=200 in 46ms
+2026-09-23 10:04:00,226 INFO  shop.search: handled request id=83548 status=200 in 28ms
+2026-09-23 10:04:01,465 INFO  shop.search: handled request id=50461 status=200 in 57ms
+2026-09-23 10:04:02,150 INFO  shop.cart: handled request id=72057 status=200 in 27ms
+2026-09-23 10:04:03,654 INFO  shop.payments: handled request id=68503 status=200 in 26ms
+2026-09-23 10:04:04,472 INFO  shop.payments: handled request id=72198 status=200 in 5ms
+2026-09-23 10:04:05,353 INFO  shop.search: handled request id=91973 status=200 in 53ms
+2026-09-23 10:04:05,141 DEBUG shop.db: SELECT * FROM search WHERE id = %s [385]
+2026-09-23 10:04:06,575 INFO  shop.auth: handled request id=18202 status=200 in 9ms
+2026-09-23 10:04:07,299 INFO  shop.orders: handled request id=18238 status=200 in 79ms
+2026-09-23 10:04:08,471 INFO  shop.payments: handled request id=45692 status=200 in 44ms
+2026-09-23 10:04:09,368 INFO  shop.auth: handled request id=51482 status=200 in 37ms
+2026-09-23 10:04:10,103 INFO  shop.orders: handled request id=88062 status=200 in 83ms
+2026-09-23 10:04:10,166 WARNING shop.cache: redis latency 224ms above threshold
+2026-09-23 10:04:11,209 INFO  shop.inventory: handled request id=72283 status=200 in 61ms
+2026-09-23 10:04:12,908 INFO  shop.search: handled request id=42905 status=200 in 57ms
+2026-09-23 10:04:12,934 DEBUG shop.db: SELECT * FROM search WHERE id = %s [506]
+2026-09-23 10:04:13,608 INFO  shop.checkout: handled request id=33978 status=200 in 3ms
+2026-09-23 10:04:14,942 INFO  shop.orders: handled request id=29833 status=200 in 79ms
+2026-09-23 10:04:15,435 INFO  shop.inventory: handled request id=51883 status=200 in 60ms
+2026-09-23 10:04:16,902 INFO  shop.payments: handled request id=88081 status=200 in 12ms
+2026-09-23 10:04:17,501 INFO  shop.inventory: handled request id=30963 status=200 in 33ms
+2026-09-23 10:04:18,166 INFO  shop.search: handled request id=95137 status=200 in 6ms
+2026-09-23 10:04:19,665 INFO  shop.users: handled request id=81383 status=200 in 43ms
+2026-09-23 10:04:19,264 DEBUG shop.db: SELECT * FROM users WHERE id = %s [437]
+tests/test_auth.py::test_auth_case_0 [32mPASSED[0m        [ 14%]
+tests/test_auth.py::test_auth_case_1 [32mPASSED[0m        [ 10%]
+tests/test_auth.py::test_auth_case_2 [32mPASSED[0m        [ 34%]
+tests/test_auth.py::test_auth_case_3 [32mPASSED[0m        [ 80%]
+tests/test_auth.py::test_auth_case_4 [32mPASSED[0m        [ 11%]
+tests/test_auth.py::test_auth_case_5 [32mPASSED[0m        [ 27%]
+tests/test_auth.py::test_auth_case_6 [32mPASSED[0m        [ 13%]
+tests/test_auth.py::test_auth_case_7 [32mPASSED[0m        [ 54%]
+tests/test_auth.py::test_auth_case_8 [32mPASSED[0m        [ 64%]
+tests/test_auth.py::test_auth_case_9 [32mPASSED[0m        [ 91%]
+tests/test_auth.py::test_auth_case_10 [32mPASSED[0m        [ 58%]
+tests/test_auth.py::test_auth_case_11 [32mPASSED[0m        [ 23%]
+tests/test_auth.py::test_auth_case_12 [32mPASSED[0m        [ 30%]
+tests/test_auth.py::test_auth_case_13 [32mPASSED[0m        [ 18%]
+tests/test_auth.py::test_auth_case_14 [32mPASSED[0m        [ 54%]
+tests/test_auth.py::test_auth_case_15 [32mPASSED[0m        [ 59%]
+tests/test_auth.py::test_auth_case_16 [32mPASSED[0m        [ 80%]
+tests/test_auth.py::test_auth_case_17 [32mPASSED[0m        [ 87%]
+tests/test_cart.py::test_cart_case_0 [32mPASSED[0m        [ 31%]
+tests/test_cart.py::test_cart_case_1 [32mPASSED[0m        [ 96%]
+tests/test_cart.py::test_cart_case_2 [32mPASSED[0m        [ 69%]
+tests/test_cart.py::test_cart_case_3 [32mPASSED[0m        [ 86%]
+tests/test_cart.py::test_cart_case_4 [32mPASSED[0m        [ 98%]
+tests/test_cart.py::test_cart_case_5 [32mPASSED[0m        [ 16%]
+tests/test_cart.py::test_cart_case_6 [32mPASSED[0m        [ 38%]
+tests/test_cart.py::test_cart_case_7 [32mPASSED[0m        [ 38%]
+tests/test_cart.py::test_cart_case_8 [32mPASSED[0m        [ 36%]
+tests/test_cart.py::test_cart_case_9 [32mPASSED[0m        [ 73%]
+tests/test_cart.py::test_cart_case_10 [32mPASSED[0m        [ 35%]
+tests/test_cart.py::test_cart_case_11 [32mPASSED[0m        [ 48%]
+tests/test_cart.py::test_cart_case_12 [32mPASSED[0m        [ 33%]
+tests/test_cart.py::test_cart_case_13 [32mPASSED[0m        [ 95%]
+tests/test_cart.py::test_cart_case_14 [32mPASSED[0m        [ 34%]
+tests/test_cart.py::test_cart_case_15 [32mPASSED[0m        [ 26%]
+tests/test_cart.py::test_cart_case_16 [32mPASSED[0m        [ 57%]
+tests/test_cart.py::test_cart_case_17 [32mPASSED[0m        [ 32%]
+tests/test_checkout.py::test_checkout_case_0 [32mPASSED[0m        [ 24%]
+tests/test_checkout.py::test_checkout_case_1 [32mPASSED[0m        [ 32%]
+tests/test_checkout.py::test_checkout_case_2 [32mPASSED[0m        [ 31%]
+tests/test_checkout.py::test_checkout_case_3 [32mPASSED[0m        [ 20%]
+tests/test_checkout.py::test_checkout_case_4 [32mPASSED[0m        [ 37%]
+tests/test_checkout.py::test_checkout_case_5 [32mPASSED[0m        [ 75%]
+tests/test_checkout.py::test_checkout_case_6 [32mPASSED[0m        [ 25%]
+tests/test_checkout.py::test_checkout_case_7 [32mPASSED[0m        [ 42%]
+tests/test_checkout.py::test_checkout_case_8 [32mPASSED[0m        [  9%]
+tests/test_checkout.py::test_checkout_case_9 [32mPASSED[0m        [ 51%]
+tests/test_checkout.py::test_checkout_case_10 [32mPASSED[0m        [ 33%]
+tests/test_checkout.py::test_checkout_case_11 [32mPASSED[0m        [ 32%]
+tests/test_checkout.py::test_checkout_case_12 [32mPASSED[0m        [ 65%]
+tests/test_checkout.py::test_checkout_case_13 [32mPASSED[0m        [ 68%]
+tests/test_checkout.py::test_checkout_case_14 [32mPASSED[0m        [ 30%]
+tests/test_checkout.py::test_checkout_case_15 [32mPASSED[0m        [ 84%]
+tests/test_checkout.py::test_checkout_case_16 [32mPASSED[0m        [ 13%]
+tests/test_checkout.py::test_checkout_case_17 [32mPASSED[0m        [ 84%]
+tests/test_inventory.py::test_inventory_case_0 [32mPASSED[0m        [ 60%]
+tests/test_inventory.py::test_inventory_case_1 [32mPASSED[0m        [  5%]
+tests/test_inventory.py::test_inventory_case_2 [32mPASSED[0m        [ 14%]
+tests/test_inventory.py::test_inventory_case_3 [32mPASSED[0m        [  1%]
+tests/test_inventory.py::test_inventory_case_4 [32mPASSED[0m        [ 61%]
+tests/test_inventory.py::test_inventory_case_5 [32mPASSED[0m        [ 30%]
+tests/test_inventory.py::test_inventory_case_6 [32mPASSED[0m        [ 58%]
+tests/test_inventory.py::test_inventory_case_7 [32mPASSED[0m        [ 48%]
+tests/test_inventory.py::test_inventory_case_8 [32mPASSED[0m        [  6%]
+tests/test_inventory.py::test_inventory_case_9 [32mPASSED[0m        [ 38%]
+tests/test_inventory.py::test_inventory_case_10 [32mPASSED[0m        [ 30%]
+tests/test_inventory.py::test_inventory_case_11 [32mPASSED[0m        [ 16%]
+tests/test_inventory.py::test_inventory_case_12 [32mPASSED[0m        [  7%]
+tests/test_inventory.py::test_inventory_case_13 [32mPASSED[0m        [ 25%]
+tests/test_inventory.py::test_inventory_case_14 [32mPASSED[0m        [ 77%]
+tests/test_inventory.py::test_inventory_case_15 [32mPASSED[0m        [ 75%]
+tests/test_inventory.py::test_inventory_case_16 [32mPASSED[0m        [ 25%]
+tests/test_inventory.py::test_inventory_case_17 [32mPASSED[0m        [ 10%]
+tests/test_orders.py::test_orders_case_0 [32mPASSED[0m        [ 48%]
+tests/test_orders.py::test_orders_case_1 [32mPASSED[0m        [ 66%]
+tests/test_orders.py::test_orders_case_2 [32mPASSED[0m        [ 23%]
+tests/test_orders.py::test_orders_case_3 [32mPASSED[0m        [ 58%]
+tests/test_orders.py::test_orders_case_4 [32mPASSED[0m        [ 78%]
+tests/test_orders.py::test_orders_case_5 [32mPASSED[0m        [ 34%]
+tests/test_orders.py::test_orders_case_6 [32mPASSED[0m        [ 86%]
+tests/test_orders.py::test_orders_case_7 [32mPASSED[0m        [  1%]
+tests/test_orders.py::test_orders_case_8 [32mPASSED[0m        [ 14%]
+tests/test_orders.py::test_orders_case_9 [32mPASSED[0m        [ 82%]
+tests/test_orders.py::test_orders_case_10 [32mPASSED[0m        [ 77%]
+tests/test_orders.py::test_orders_case_11 [32mPASSED[0m        [ 91%]
+tests/test_orders.py::test_orders_case_12 [32mPASSED[0m        [ 80%]
+tests/test_orders.py::test_orders_case_13 [32mPASSED[0m        [ 45%]
+tests/test_orders.py::test_orders_case_14 [32mPASSED[0m        [ 28%]
+tests/test_orders.py::test_orders_case_15 [32mPASSED[0m        [  5%]
+tests/test_orders.py::test_orders_case_16 [32mPASSED[0m        [ 48%]
+tests/test_orders.py::test_orders_case_17 [32mPASSED[0m        [ 44%]
+tests/test_payments.py::test_payments_case_0 [32mPASSED[0m        [ 19%]
+tests/test_payments.py::test_payments_case_1 [32mPASSED[0m        [  6%]
+tests/test_payments.py::test_payments_case_2 [32mPASSED[0m        [ 27%]
+tests/test_payments.py::test_payments_case_3 [32mPASSED[0m        [ 33%]
+tests/test_payments.py::test_payments_case_4 [32mPASSED[0m        [  5%]
+tests/test_payments.py::test_payments_case_5 [32mPASSED[0m        [ 77%]
+tests/test_payments.py::test_payments_case_6 [32mPASSED[0m        [ 94%]
+tests/test_payments.py::test_payments_case_7 [32mPASSED[0m        [ 84%]
+tests/test_payments.py::test_payments_case_8 [32mPASSED[0m        [ 27%]
+tests/test_payments.py::test_payments_case_9 [32mPASSED[0m        [  2%]
+tests/test_payments.py::test_payments_case_10 [32mPASSED[0m        [ 42%]
+tests/test_payments.py::test_payments_case_11 [32mPASSED[0m        [ 53%]
+tests/test_payments.py::test_payments_case_12 [32mPASSED[0m        [ 87%]
+tests/test_payments.py::test_payments_case_13 [32mPASSED[0m        [ 48%]
+tests/test_payments.py::test_payments_case_14 [32mPASSED[0m        [ 24%]
+tests/test_payments.py::test_payments_case_15 [32mPASSED[0m        [ 80%]
+tests/test_payments.py::test_payments_case_16 [32mPASSED[0m        [ 40%]
+tests/test_payments.py::test_payments_case_17 [32mPASSED[0m        [ 10%]
+tests/test_search.py::test_search_case_0 [32mPASSED[0m        [ 27%]
+tests/test_search.py::test_search_case_1 [32mPASSED[0m        [  5%]
+tests/test_search.py::test_search_case_2 [32mPASSED[0m        [ 64%]
+tests/test_search.py::test_search_case_3 [32mPASSED[0m        [ 71%]
+tests/test_search.py::test_search_case_4 [32mPASSED[0m        [ 62%]
+tests/test_search.py::test_search_case_5 [32mPASSED[0m        [  9%]
+tests/test_search.py::test_search_case_6 [32mPASSED[0m        [ 53%]
+tests/test_search.py::test_search_case_7 [32mPASSED[0m        [ 13%]
+tests/test_search.py::test_search_case_8 [32mPASSED[0m        [ 51%]
+tests/test_search.py::test_search_case_9 [32mPASSED[0m        [ 85%]
+tests/test_search.py::test_search_case_10 [32mPASSED[0m        [ 71%]
+tests/test_search.py::test_search_case_11 [32mPASSED[0m        [ 20%]
+tests/test_search.py::test_search_case_12 [32mPASSED[0m        [ 82%]
+tests/test_search.py::test_search_case_13 [32mPASSED[0m        [ 69%]
+tests/test_search.py::test_search_case_14 [32mPASSED[0m        [ 12%]
+tests/test_search.py::test_search_case_15 [32mPASSED[0m        [ 84%]
+tests/test_search.py::test_search_case_16 [32mPASSED[0m        [ 21%]
+tests/test_search.py::test_search_case_17 [32mPASSED[0m        [ 51%]
+tests/test_users.py::test_users_case_0 [32mPASSED[0m        [ 90%]
+tests/test_users.py::test_users_case_1 [32mPASSED[0m        [ 35%]
+tests/test_users.py::test_users_case_2 [32mPASSED[0m        [ 53%]
+tests/test_users.py::test_users_case_3 [32mPASSED[0m        [ 37%]
+tests/test_users.py::test_users_case_4 [32mPASSED[0m        [ 86%]
+tests/test_users.py::test_users_case_5 [32mPASSED[0m        [ 40%]
+tests/test_users.py::test_users_case_6 [32mPASSED[0m        [ 54%]
+tests/test_users.py::test_users_case_7 [32mPASSED[0m        [  7%]
+tests/test_users.py::test_users_case_8 [32mPASSED[0m        [ 40%]
+tests/test_users.py::test_users_case_9 [32mPASSED[0m        [ 96%]
+tests/test_users.py::test_users_case_10 [32mPASSED[0m        [ 73%]
+tests/test_users.py::test_users_case_11 [32mPASSED[0m        [ 46%]
+tests/test_users.py::test_users_case_12 [32mPASSED[0m        [ 54%]
+tests/test_users.py::test_users_case_13 [32mPASSED[0m        [ 54%]
+tests/test_users.py::test_users_case_14 [32mPASSED[0m        [  3%]
+tests/test_users.py::test_users_case_15 [32mPASSED[0m        [ 99%]
+tests/test_users.py::test_users_case_16 [32mPASSED[0m        [ 47%]
+tests/test_users.py::test_users_case_17 [32mPASSED[0m        [ 83%]
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+PASS tests/test_health.py::test_ping
+tests/test_inventory.py::test_reserve_stock_concurrent FAILED                [ 97%]
+
+=================================== FAILURES ===================================
+____________________ test_reserve_stock_concurrent ____________________
+Traceback (most recent call last):
+  File "/Users/dev/shop/tests/test_inventory.py", line 88, in test_reserve_stock_concurrent
+    resp = client.post("/api/inventory/reserve", json={"sku": "A-1", "qty": 3})
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/test/client.py", line 241, in wrapped_view
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 785, in wrapped_view
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 248, in inner
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 484, in dispatch
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 473, in inner
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/rest_framework/views.py", line 880, in inner
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/db/transaction.py", line 455, in execute_sql
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/utils/decorators.py", line 413, in wrapped_view
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 831, in dispatch
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/rest_framework/generics.py", line 173, in inner
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/db/models/query.py", line 92, in execute_sql
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 185, in __call__
+    response = self.process(request, *args, **kwargs)
+  File "/Users/dev/shop/shop/inventory/views.py", line 41, in post
+    reservation = reserve_stock(sku=data["sku"], qty=data["qty"])
+  File "/Users/dev/shop/shop/inventory/service.py", line 57, in reserve_stock
+    item.available -= qty
+  File "/Users/dev/shop/.venv/lib/python3.12/site-packages/django/db/models/query_utils.py", line 190, in __set__
+    raise ValueError(f"available cannot go negative for {instance.sku!r}")
+ValueError: available cannot go negative for 'A-1'
+
+[31m=========================== short test summary info ============================[0m
+FAILED tests/test_inventory.py::test_reserve_stock_concurrent - ValueError: available cannot go negative for 'A-1'
+[31m================== 1 failed, 264 passed in 41.27s ==================[0m
