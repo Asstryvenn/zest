@@ -181,8 +181,8 @@ pub fn plan(code: &str, lang: Lang, keep: &dyn Fn(&str) -> bool, min_rows: usize
         }
         let n = end + 1 - start;
         let placeholder = match lang {
-            Lang::Python => format!("{indent}...  # toksqueeze: {n} lines hidden"),
-            _ => format!("{indent}/* toksqueeze: {n} lines hidden */"),
+            Lang::Python => format!("{indent}...  # zest: {n} lines hidden"),
+            _ => format!("{indent}/* zest: {n} lines hidden */"),
         };
         candidates.push(Collapse { start_row: start, end_row: end, placeholder });
     }
@@ -319,7 +319,7 @@ def parse(raw: str) -> dict:
         let p = plan(PY, Lang::Python, &|n| n == "parse", 2).unwrap();
         let lines: Vec<&str> = PY.split('\n').collect();
         let out = apply(&lines, &p, |_| String::new());
-        assert!(out.contains("def load(self) -> dict:\n        \"\"\"Load the file.\"\"\"\n        ...  # toksqueeze: 4 lines hidden"));
+        assert!(out.contains("def load(self) -> dict:\n        \"\"\"Load the file.\"\"\"\n        ...  # zest: 4 lines hidden"));
         assert!(out.contains("k, v = line.split(\"=\", 1)"), "kept function stays intact");
         assert!(out.contains("self.data = {}"), "constructors are kept");
         assert!(parses_cleanly(&out, Lang::Python));
@@ -332,8 +332,8 @@ def parse(raw: str) -> dict:
         let p = plan(ts, Lang::TypeScript, &|_| false, 2).unwrap();
         let lines: Vec<&str> = ts.split('\n').collect();
         let out = apply(&lines, &p, |_| String::new());
-        assert!(out.contains("async find(id: string): Promise<User> {\n    /* toksqueeze: 3 lines hidden */\n  }"));
-        assert!(out.contains("export const handler = async (req: Req) => {\n  /* toksqueeze: 3 lines hidden */\n};"));
+        assert!(out.contains("async find(id: string): Promise<User> {\n    /* zest: 3 lines hidden */\n  }"));
+        assert!(out.contains("export const handler = async (req: Req) => {\n  /* zest: 3 lines hidden */\n};"));
         assert!(out.contains("export interface User { id: string }"));
         assert!(parses_cleanly(&out, Lang::TypeScript));
     }

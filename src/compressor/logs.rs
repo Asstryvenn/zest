@@ -39,7 +39,7 @@ static PASS_RE: LazyLock<Regex> = LazyLock::new(|| {
 const LEVEL_SCAN_BYTES: usize = 96;
 
 fn marker(msg: &str) -> String {
-    format!("[TOKSQUEEZE: {msg}]")
+    format!("[ZEST: {msg}]")
 }
 
 fn leading_ws(s: &str) -> usize {
@@ -168,7 +168,7 @@ pub fn drop_global_repeats(lines: Vec<String>) -> Vec<String> {
     let mut out = Vec::with_capacity(lines.len());
     let mut dropped = 0usize;
     for line in lines {
-        if line.trim().len() >= 30 && !line.starts_with("[TOKSQUEEZE") && !seen.insert(line.clone()) {
+        if line.trim().len() >= 30 && !line.starts_with("[ZEST") && !seen.insert(line.clone()) {
             dropped += 1;
             continue;
         }
@@ -310,7 +310,7 @@ mod tests {
     fn dedupes_identical_runs() {
         let lines = vec!["PASS test_auth.py".to_string(); 500];
         let out = dedupe(lines, false);
-        assert_eq!(out, vec!["PASS test_auth.py", "[TOKSQUEEZE: previous line repeated 499 more times]"]);
+        assert_eq!(out, vec!["PASS test_auth.py", "[ZEST: previous line repeated 499 more times]"]);
     }
 
     #[test]
@@ -324,7 +324,7 @@ mod tests {
     #[test]
     fn keeps_alarming_info_lines() {
         let out = drop_verbose_levels(v("INFO a\nINFO b\nINFO request failed: timeout\nERROR boom"));
-        assert_eq!(out, v("[TOKSQUEEZE: 2 INFO/DEBUG lines hidden]\nINFO request failed: timeout\nERROR boom"));
+        assert_eq!(out, v("[ZEST: 2 INFO/DEBUG lines hidden]\nINFO request failed: timeout\nERROR boom"));
     }
 
     #[test]

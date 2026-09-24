@@ -1,0 +1,2 @@
+# Check out text with LF everywhere so fixture-based tests behave the same on Windows.
+* text=auto eol=lf

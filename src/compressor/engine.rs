@@ -21,7 +21,7 @@ use std::collections::{HashMap, HashSet};
 use std::sync::{Arc, LazyLock, Mutex};
 use xxhash_rust::xxh3::Xxh3;
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, clap::ValueEnum, serde::Serialize)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash, clap::ValueEnum, serde::Serialize, serde::Deserialize)]
 #[serde(rename_all = "lowercase")]
 pub enum Mode {
     /// Tier 1 only: ANSI/control stripping, whitespace, identical-line dedup.
@@ -237,7 +237,9 @@ impl CompressorEngine {
             return hit.clone();
         }
         let mut out = self.compress_uncached(input, kind, focus);
-        if out.len() >= input.len() {
+        // Never grow a block, and never empty one out: a message that was only
+        // "Hi!" must still say something, or the API rejects the empty block.
+        if out.len() >= input.len() || (out.trim().is_empty() && !input.trim().is_empty()) {
             out = input.to_string();
         }
         let out: Arc<str> = out.into();
@@ -402,7 +404,16 @@ mod tests {
         let src = "     1\tdef a():\n     2\t    x = 1\n     3\t    y = 2\n     4\t    return x + y\n     5\t\n     6\tdef b():\n     7\t    return 3\n";
         let e = CompressorEngine::new(Mode::Max);
         let out = e.compress(src, BlockKind::Tool, &Focus::default());
-        assert_eq!(out.as_ref(), "     1\tdef a():\n      \t    ...  # toksqueeze: 3 lines hidden\n     5\t\n     6\tdef b():\n     7\t    return 3\n");
+        assert_eq!(out.as_ref(), "     1\tdef a():\n      \t    ...  # zest: 3 lines hidden\n     5\t\n     6\tdef b():\n     7\t    return 3\n");
+    }
+
+    #[test]
+    fn never_empties_a_message() {
+        let e = CompressorEngine::new(Mode::Max);
+        for greeting in ["hi", "Hello!", "Thanks in advance!", "  hey there,  "] {
+            let out = e.compress(greeting, BlockKind::Human, &e.focus_for([greeting]));
+            assert_eq!(out.as_ref(), greeting);
+        }
     }
 
     #[test]

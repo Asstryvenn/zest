@@ -1,4 +1,4 @@
-//! End-to-end: client -> toksqueeze proxy -> mock upstream.
+//! End-to-end: client -> zest proxy -> mock upstream.
 
 use axum::body::Bytes;
 use axum::extract::State;
@@ -7,8 +7,8 @@ use axum::response::IntoResponse;
 use axum::Router;
 use serde_json::{json, Value};
 use std::sync::{Arc, Mutex};
-use toksqueeze::compressor::Mode;
-use toksqueeze::proxy::server::{router, AppState, ProxyConfig};
+use zest::compressor::Mode;
+use zest::proxy::server::{run_listener, AppState, ProxyConfig};
 
 const CI_LOG: &str = include_str!("fixtures/ci_run.log");
 
@@ -20,7 +20,7 @@ struct Seen {
 
 async fn upstream(State(seen): State<Arc<Mutex<Seen>>>, uri: Uri, headers: HeaderMap, body: Bytes) -> impl IntoResponse {
     let mut s = seen.lock().unwrap();
-    let compressed = String::from_utf8_lossy(&body).contains("TOKSQUEEZE");
+    let compressed = String::from_utf8_lossy(&body).contains("ZEST");
     s.bodies.push((uri.to_string(), headers, body));
     if s.reject_compressed && compressed {
         return (StatusCode::BAD_REQUEST, [("content-type", "application/json")], r#"{"error":"nope"}"#.to_string());
@@ -39,15 +39,15 @@ async fn spawn(app: Router) -> String {
 async fn setup(reject_compressed: bool) -> (String, Arc<Mutex<Seen>>) {
     let seen = Arc::new(Mutex::new(Seen { reject_compressed, ..Default::default() }));
     let upstream_url = spawn(Router::new().fallback(upstream).with_state(seen.clone())).await;
-    let state = AppState::new(ProxyConfig {
-        mode: Mode::Balanced,
-        openai_upstream: upstream_url.clone(),
-        anthropic_upstream: upstream_url,
-        default_price_per_mtok: 3.0,
-        keep_verbose_logs: false,
-        quiet: true,
-    });
-    (spawn(router(state)).await, seen)
+    let mut cfg = ProxyConfig::new(Mode::Balanced);
+    cfg.openai_upstream = upstream_url.clone();
+    cfg.anthropic_upstream = upstream_url;
+    cfg.quiet = true;
+    let state = AppState::new(cfg).unwrap();
+    let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+    let addr = listener.local_addr().unwrap();
+    tokio::spawn(run_listener(listener, state, std::future::pending()));
+    (format!("http://{addr}"), seen)
 }
 
 fn anthropic_body() -> Value {
@@ -132,6 +132,6 @@ async fn other_paths_pass_through_and_stats_are_served() {
     assert_eq!(resp.status(), 200);
     assert_eq!(seen.lock().unwrap().bodies[0].0, "/v1/models");
 
-    let stats: Value = client.get(format!("{proxy}/toksqueeze/stats")).send().await.unwrap().json().await.unwrap();
+    let stats: Value = client.get(format!("{proxy}/zest/stats")).send().await.unwrap().json().await.unwrap();
     assert!(stats.get("tokens_saved").is_some());
 }

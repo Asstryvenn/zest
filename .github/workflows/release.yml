@@ -1,0 +1,113 @@
+# Builds zest for macOS (ARM + Intel), Linux and Windows whenever a `v*` tag is
+# pushed, and attaches the archives plus SHA-256 checksums to a GitHub release.
+#
+#   git tag v0.1.0 && git push origin v0.1.0
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  create-release:
+    name: Create release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub release for the tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 \
+            || gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" \
+                 --title "zest $GITHUB_REF_NAME" --generate-notes --verify-tag
+
+  build:
+    name: Build ${{ matrix.target }}
+    needs: create-release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: aarch64-apple-darwin
+            os: macos-latest
+            test: true
+          # Cross-compiled on the ARM runner; Apple's toolchain targets both architectures.
+          - target: x86_64-apple-darwin
+            os: macos-latest
+            test: false
+          # 22.04 links against an older glibc, so the binary also runs on older distros.
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-22.04
+            test: true
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+            test: true
+    defaults:
+      run:
+        shell: bash
+    env:
+      # aws-lc-sys (TLS for upstream HTTPS) ships prebuilt NASM objects for Windows.
+      AWS_LC_SYS_PREBUILT_NASM: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust
+        run: |
+          rustup toolchain install stable --profile minimal --target ${{ matrix.target }}
+          rustup default stable
+
+      - name: Cache cargo registry and build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ matrix.target }}-cargo-${{ hashFiles('Cargo.lock') }}
+
+      - name: Test
+        if: matrix.test
+        run: cargo test --release --locked --target ${{ matrix.target }}
+
+      - name: Build
+        run: cargo build --release --locked --target ${{ matrix.target }}
+
+      - name: Package
+        id: package
+        run: |
+          name="zest-${{ matrix.target }}"
+          mkdir -p "dist/$name"
+          cp README.md "dist/$name/"
+          cd dist
+          if [[ "${{ matrix.target }}" == *windows* ]]; then
+            cp "../target/${{ matrix.target }}/release/zest.exe" "$name/"
+            archive="$name.zip"
+            7z a -tzip "$archive" "$name" >/dev/null
+            sha256sum "$archive" > "$archive.sha256"
+          else
+            cp "../target/${{ matrix.target }}/release/zest" "$name/"
+            archive="$name.tar.gz"
+            tar -czf "$archive" "$name"
+            if command -v sha256sum >/dev/null; then
+              sha256sum "$archive" > "$archive.sha256"
+            else
+              shasum -a 256 "$archive" > "$archive.sha256"
+            fi
+          fi
+          echo "archive=dist/$archive" >> "$GITHUB_OUTPUT"
+
+      - name: Upload to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --clobber \
+            "${{ steps.package.outputs.archive }}" \
+            "${{ steps.package.outputs.archive }}.sha256"

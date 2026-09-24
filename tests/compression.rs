@@ -1,9 +1,9 @@
 //! Step 5 verification: realistic log dumps and source files shrink by at least
 //! 50% while the code that remains still parses and nothing important is lost.
 
-use toksqueeze::compressor::ast::{parses_cleanly, Lang};
-use toksqueeze::compressor::{BlockKind, CompressorEngine, Mode};
-use toksqueeze::tui::stats::count_tokens;
+use zest::compressor::ast::{parses_cleanly, Lang};
+use zest::compressor::{BlockKind, CompressorEngine, Mode};
+use zest::tui::stats::count_tokens;
 
 const CI_LOG: &str = include_str!("fixtures/ci_run.log");
 const PY: &str = include_str!("fixtures/inventory_service.py");
@@ -52,7 +52,7 @@ fn ci_log_shrinks_over_50_percent_and_keeps_the_failure() {
 #[test]
 fn safe_mode_only_dedupes_and_strips_noise() {
     let out = squeeze(Mode::Safe, BlockKind::Tool, CI_LOG);
-    assert!(out.contains("[TOKSQUEEZE: previous line repeated 119 more times]"));
+    assert!(out.contains("[ZEST: previous line repeated 119 more times]"));
     assert!(out.contains("INFO  shop."), "safe mode keeps INFO lines");
     assert!(out.contains("site-packages/django/test/client.py"), "safe mode keeps every frame");
     assert!(!out.contains('\x1b'));
@@ -100,7 +100,7 @@ fn balanced_keeps_the_targeted_function_byte_for_byte() {
     let start = PY.find("    def reserve_stock").unwrap();
     let end = PY.find("    def release").unwrap();
     assert!(code.contains(&PY[start..end]));
-    assert!(code.contains("...  # toksqueeze:"), "other bodies collapse");
+    assert!(code.contains("...  # zest:"), "other bodies collapse");
     assert!(!out.contains("Could you please"));
     assert!(!out.contains("Thanks in advance"));
     assert!(reduction(&prompt, &out) >= 0.4);

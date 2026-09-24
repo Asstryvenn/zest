@@ -1,7 +1,7 @@
 //! Token accounting and the one-line terminal readout.
 
 use serde::Serialize;
-use std::io::IsTerminal;
+use crate::tui::theme::{self, DEEP_CYAN, ELECTRIC, MUTED, SPARK};
 use std::sync::atomic::{AtomicU64, Ordering};
 use std::sync::OnceLock;
 use tiktoken_rs::CoreBPE;
@@ -83,13 +83,17 @@ impl Stats {
 
     pub fn summary_line(&self) -> String {
         let s = self.snapshot();
+        let sep = theme::paint("|", MUTED);
         format!(
-            "[TokSqueeze] session: {} requests | {} -> {} tokens ({}) | Saved: ~${:.3}",
-            s.requests,
-            thousands(s.tokens_in as usize),
-            thousands(s.tokens_out as usize),
-            pct(s.tokens_in as usize, s.tokens_out as usize),
-            s.usd_saved
+            "{} {} {} requests {sep} {} {} {} tokens ({}) {sep} Saved: {}",
+            theme::tag(),
+            theme::paint("session:", MUTED),
+            theme::bold(&s.requests.to_string(), ELECTRIC),
+            theme::paint(&thousands(s.tokens_in as usize), MUTED),
+            theme::paint("->", MUTED),
+            theme::bold(&thousands(s.tokens_out as usize), ELECTRIC),
+            theme::bold(&pct(s.tokens_in as usize, s.tokens_out as usize), SPARK),
+            theme::bold(&format!("~${:.3}", s.usd_saved), SPARK),
         )
     }
 }
@@ -113,20 +117,22 @@ fn pct(before: usize, after: usize) -> String {
     format!("{:+.1}%", (after as f64 / before as f64 - 1.0) * 100.0)
 }
 
-/// `[TokSqueeze] 18,400 -> 3,100 tokens (-83.1%) | Saved: ~$0.045 | Latency: 3.2ms`
+/// `[zest] 18,400 -> 3,100 tokens (-83.1%) | Saved: ~$0.045 | Latency: 3.2ms`
 pub fn format_line(before: usize, after: usize, usd_saved: f64, latency_ms: f64, suffix: &str) -> String {
-    let color = std::io::stderr().is_terminal() && std::env::var_os("NO_COLOR").is_none();
-    let (g, d, r) = if color { ("\x1b[32m", "\x1b[2m", "\x1b[0m") } else { ("", "", "") };
+    let sep = theme::paint("|", MUTED);
     let mut line = format!(
-        "[TokSqueeze] {} -> {} tokens ({g}{}{r}) | Saved: ~${:.3} | Latency: {:.1}ms",
-        thousands(before),
-        thousands(after),
-        pct(before, after),
-        usd_saved,
-        latency_ms
+        "{} {} {} {} tokens ({}) {sep} Saved: {} {sep} Latency: {}",
+        theme::tag(),
+        theme::paint(&thousands(before), MUTED),
+        theme::paint("->", MUTED),
+        theme::bold(&thousands(after), ELECTRIC),
+        theme::bold(&pct(before, after), SPARK),
+        theme::paint(&format!("~${usd_saved:.3}"), SPARK),
+        theme::paint(&format!("{latency_ms:.1}ms"), DEEP_CYAN),
     );
     if !suffix.is_empty() {
-        line.push_str(&format!(" {d}{suffix}{r}"));
+        line.push(' ');
+        line.push_str(&theme::paint(suffix, MUTED));
     }
     line
 }
@@ -137,10 +143,9 @@ mod tests {
 
     #[test]
     fn formats_like_the_spec() {
-        std::env::set_var("NO_COLOR", "1");
         assert_eq!(
             format_line(18400, 3100, 0.045, 3.2, ""),
-            "[TokSqueeze] 18,400 -> 3,100 tokens (-83.2%) | Saved: ~$0.045 | Latency: 3.2ms"
+            "[zest] 18,400 -> 3,100 tokens (-83.2%) | Saved: ~$0.045 | Latency: 3.2ms"
         );
     }
 
